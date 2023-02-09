@@ -25,20 +25,17 @@ namespace ConsoleApp41
 
         private static void TaskTwo()
         {
-            double krat;
-            for (int i = 10; i<=99;i++)
+            for (int i = 10; i<=100;i+=5)
             {
-                krat = i % 5;
-                if (krat == 0)
-                {
-                    Console.WriteLine(i);
-                }
+                Console.Write(i+" ");
             }
         }
         private static void TaskThree()
         {
             int a = Convert.ToInt32(Console.ReadLine());
             int b = Convert.ToInt32(Console.ReadLine());
+            if(a>0 && b>0)
+            {
             int sum = 0;
             int count = 0;
             for(int i = a; i<=b;++i)
@@ -49,6 +46,11 @@ namespace ConsoleApp41
             double sred = sum /count;
             Console.WriteLine(sum);
             Console.WriteLine(sred);
+            }
+            else
+            {
+                Console.WriteLine("Wrong numbers");
+            }
         }
     }
 }
