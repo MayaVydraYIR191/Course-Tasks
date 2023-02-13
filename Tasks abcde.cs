@@ -48,6 +48,18 @@ namespace ConsoleApp38
             double d = 14.53;
             int r;
             r = (int)d;
+            
+            int aaa = 100;
+            object oj = aaa;
+            int aaaa = (int)oj;
+            
+            float floy = 50f;
+            object obh = floy;
+            float floaty = (float)obh;
+            
+            string striy = "Hello";
+            object obhe = stringy;
+            string stringa =(string)obhe;
 
             var var = 10;
             var = 12;
