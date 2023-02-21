@@ -21,6 +21,8 @@ namespace ConsoleApp49
                 arraytwo[i] = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine(arraytwo[i]);
             }
+            PrepareArray(arraytwo);
+            Array.Sort(arraytwo);
             for (int i = 0; i < 6 && i > 3; i++)
             {
                 Console.WriteLine("The three last: "+ arraytwo[i]);
