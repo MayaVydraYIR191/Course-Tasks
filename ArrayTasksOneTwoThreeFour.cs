@@ -21,6 +21,8 @@ namespace ConsoleApp49
                 arraytwo[i] = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine(arraytwo[i]);
             }
+            PrepareArray(arraytwo);
+            Array.Sort(arraytwo);
             for (int i = 0; i < 6 && i > 3; i++)
             {
                 Console.WriteLine("The three last: "+ arraytwo[i]);
@@ -42,22 +44,24 @@ namespace ConsoleApp49
                 Console.WriteLine(arraytwo[i]);
             }
         }
-        public static int TaskTwo()
+       public static int TaskTwo()
         {
-            int[,] array = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9} };
+            int[,] array = new int[3,3] { { 1, 10, 2 }, { 2, 5, 3 }, { 1, 2, 1 } };
+            var ryad = array.GetUpperBound(0) + 1;
+            var kolonka = array.Length / ryad;
             int maxar = int.MinValue;
-            for(int i = 0;i<array.GetLength(0);i++)
+            for (int i = 0; i < ryad; i++)
             {
-                for (int j = 0; j < array.GetLength(0); j++)
+                maxar = array[i, 0];
+                for(int j =1;j<kolonka; j++)
                 {
-                  
-                    if (maxar < array[i, j])
+                    var znacz = array[i, j];
+                    if(maxar <znacz)
                     {
-                        maxar = array[i, j];
+                        maxar = znacz;
                     }
-                    
                 }
-                Console.WriteLine("Max Value = " + maxar);
+                Console.WriteLine(maxar);
             }
             return maxar;
         }
@@ -78,14 +82,14 @@ namespace ConsoleApp49
         public static void TaskFour()
         {
             string stroka = Console.ReadLine();
-            string[] slova = stroka.Split(new char[] { ' ' });
+            string[] slova = stroka.Split(new char[] { ' ',',','.','\n','\t'});
             int count = 0;
-            for(int i =0;i<slova.Length; i++)
+            for (int i = 0; i < slova.Length; i++)
             {
                 Console.WriteLine(slova[i]);
                 count++;
             }
-            Console.WriteLine("Words in sentence: "+count);
+            Console.WriteLine("Words in sentence: " + count);
         }
         
     }
