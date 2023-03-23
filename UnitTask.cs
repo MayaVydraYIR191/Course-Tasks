@@ -2,24 +2,108 @@
 
 namespace ConsoleApp63
 {
+
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Warrior war = new Warrior();
+            war.unitName = "King";
+            war.unitNumber = 1;
+
+            Dragon dra = new Dragon();
+            dra.unitName = "Goldwing";
+            dra.unitNumber = 2;
+
+            Gryphon gry = new Gryphon();
+            gry.unitName = "Shard";
+            gry.unitNumber = 3;
         }
     }
-    abstract class Units
+
+    public class Warrior : Units, IFlight, ISwim,IMagicalAbilities
     {
-        string unitName;
-        int unitNumber;
-        string[] unitAbilities;
+        public new void Move()
+        {
+            Console.WriteLine($"{unitName} is Moving");
+        }
+        public override void Stand()
+        {
+            Console.WriteLine($"{unitName} stands");
+        }
+        public void Fireball()
+        {
+                Console.WriteLine($"{unitName} can't use Fireball");
+        }
+        public void Swimming()
+        {
+            Console.WriteLine($"{unitName} swims");
+        }
+        public void Flying()
+        {
+            Console.WriteLine($"{unitName} can't fly!");
+        }
+
+    }
+
+    public class Dragon: Units, IFlight, ISwim, IMagicalAbilities
+    {
+        public new void Move()
+        {
+            Console.WriteLine($"{unitName} is Moving");
+        }
+        public override void Stand()
+        {
+            Console.WriteLine($"{unitName} stands");
+        }
+        public void Fireball()
+        {
+            Console.WriteLine($"{unitName} throws a Fireball into its enemies");
+        }
+        public void Swimming()
+        {
+            Console.WriteLine($"{unitName} swims");
+        }
+        public void Flying()
+        {
+            Console.WriteLine($"{unitName} flies!");
+        }
+
+    }
+    public class Gryphon : Units, IFlight, ISwim, IMagicalAbilities
+    {
+        public new void Move()
+        {
+            Console.WriteLine($"{unitName} is Moving");
+        }
+        public override void Stand()
+        {
+            Console.WriteLine($"{unitName} stands");
+        }
+        public void Fireball()
+        {
+            Console.WriteLine($"{unitName} can't throw a Fireball");
+        }
+        public void Swimming()
+        {
+            Console.WriteLine($"{unitName} can't swim");
+        }
+        public void Flying()
+        {
+            Console.WriteLine($"{unitName} flies!");
+        }
+
+    }
+    public abstract class Units
+    {
+        public string unitName;
+        public int unitNumber;
 
         public bool MoveRight;
         public bool MoveLeft;
         public bool Jump;
         public bool Stopping;
-        void Move()
+        public void Move()
         {
             string command = Console.ReadLine();
             switch (command)
@@ -46,63 +130,15 @@ namespace ConsoleApp63
     }
     interface IMagicalAbilities
     {
-        static string Fireball(string ability)
-        {
-            ability = Console.ReadLine();
-            if(ability == "Fireball")
-            {
-                Console.WriteLine("The raging fire essence is thrown into an enemy");
-            }
-            else if (ability == "Fly")
-            {
-                ability = IFlight.Flying(ability);
-            }
-            else if (ability == "Swim")
-            {
-                ability = ISwim.Swimming(ability);
-            }
-            return (ability);
-        }
+        public void Fireball();
     }
     interface IFlight
     {
-        static string Flying(string ability)
-        {
-            ability = Console.ReadLine();
-            if (ability == "Fly")
-            {
-                Console.WriteLine("Character bursts into the air, opening its wings");
-            }
-            else if (ability == "Swim")
-            {
-                ability = ISwim.Swimming(ability);
-            }
-            else if (ability == "Fireball")
-            {
-                ability = IMagicalAbilities.Fireball(ability);
-            }
-            return (ability);
-        }
+        public void Flying();
     }
     interface ISwim
     {
-        static string Swimming(string ability)
-        {
-            ability = Console.ReadLine();
-            if (ability == "Swim")
-            {
-                Console.WriteLine("Character jumps into the water and swims");
-            }
-            else if(ability == "Fly")
-            {
-                ability = IFlight.Flying(ability);
-            }
-            else if(ability == "Fireball")
-            {
-                ability = IMagicalAbilities.Fireball(ability);
-            }
-            return (ability);
-        }
+        public void Swimming();
     }
 
 
