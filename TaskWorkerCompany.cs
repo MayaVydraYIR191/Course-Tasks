@@ -3,7 +3,7 @@
 namespace ConsoleApp43
 {
     class Program
-    {
+     {
         static void Main(string[] args)
         {
             Company Ivanovy = new Company();
@@ -11,20 +11,20 @@ namespace ConsoleApp43
             Ivanovy.Name = "Ivanovy";
             Ivanov.Working = 5;
             Ivanov.BreakRules = 1;
-            //Rabotnik.Pay Ivanovpay = 1500; доработаю зарплату!
             Ivanov.Ascendence(Ivanov.Working);
             Ivanov.Banning(Ivanov.BreakRules);
-            Ivanovy.Firing();
+            Company fireIvanov = new Company();
+            fireIvanov.Firing(Ivanov);
             Ivanovy.Payment();
         }
     }
 
     class Rabotnik
     {
-        public double Working;
-        public static string Status;
-        public static bool Ban;
-        public int BreakRules;
+        public double Working { get { return Working; } set { if (Working <= 300) { Console.WriteLine("Lower than needed"); } else { Working = value; } } }
+        public static string Status { get { return Status; } set { Status = value; } }
+        public static bool Ban { get { return Ban; } set { Ban = value; } }
+        public int BreakRules { get { return BreakRules; } set { if (BreakRules <= 0) { Console.WriteLine("Impossible"); } else { BreakRules = value; } } }
         public static double Pay;
         public void Ascendence(double Working)
         {
@@ -66,8 +66,12 @@ namespace ConsoleApp43
     }
     class Company
     {
-        public string Name;
-        public void Firing()
+        public string Name { get { return Name; } set { Name = value; } }
+        public int Age { get { return Age; } set { if (Age < 0) { Console.WriteLine("Impossible"); } else { Age = value; } } }
+
+        public string DaughterCompanies { get { return DaughterCompanies; } set { DaughterCompanies = value; } }
+
+        public void Firing(Rabotnik rabotnik)
         {
             if (Rabotnik.Ban == true)
             {
