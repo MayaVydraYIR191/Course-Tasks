@@ -2,6 +2,7 @@
 
 namespace ConsoleApp55
 {
+  
     class Program
     {
         static void Main(string[] args)
@@ -11,14 +12,16 @@ namespace ConsoleApp55
             switch (play)
             {
                 case "Guitar":
-                    Guitar.Play();
+                   Guitar playinggui = new Guitar();
+                    playinggui.Play();
                     break;
-
                 case "Violin":
-                    Violin.Play();
+                    Violin playingvio = new Violin();
+                    playingvio.Play();
                     break;
                 case "Piano":
-                    Piano.Play();
+                    Piano playingpia = new Piano();
+                    playingpia.Play();
                     break;
                 default:
                     Console.WriteLine("Wrong");
@@ -30,35 +33,28 @@ namespace ConsoleApp55
 
     interface IPlayable
     {
-        public static void Play()
-        {
-            Console.WriteLine("I play");
-        }
+        public void Play();
     }
 
     public class Guitar : IPlayable
     {
-        public static void Play()
+        public void Play()
         {
             Console.WriteLine("I am guitar and I am playing");
         }
     }
     public class Violin : IPlayable
     {
-        public static void Play()
+        public void Play()
         {
             Console.WriteLine("I am violin and I am playing");
         }
     }
     public class Piano : IPlayable
     {
-        public static void Play()
+        public void Play()
         {
             Console.WriteLine("I am piano and I am playing");
         }
     }
-
-
-
-
 }
