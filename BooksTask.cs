@@ -2,7 +2,7 @@
 
 namespace ConsoleApp57
 {
-    class Program
+       class Program
     {
         static void Main(string[] args)
         {
@@ -10,32 +10,47 @@ namespace ConsoleApp57
             for (int i = 0; i < booksmagazines.Length; i++)
             {
                 Console.WriteLine(booksmagazines[i]);
+                if(booksmagazines[i]is Book)
+                {
+                    PrintBooks(booksmagazines);
+                }
+                else if(booksmagazines[i] is Magazine)
+                {
+                    PrintMagazines(booksmagazines);
+                }
             }
         }
+        static void PrintMagazines(IPrintable[] printable)
+        {
+            Console.WriteLine(printable[0]);
+        }
+        static void PrintBooks(IPrintable[] printable)
+        {
+            Console.WriteLine(printable[0]);
+        }
+
+
     }
     interface IPrintable
     {
-        void Print()
-        {
-            Console.WriteLine();
-        }
+        public void Print(IPrintable edition);
     }
     class Book : IPrintable
     {
         public string bookname;
         public int booknumber;
-        static void PrintBooks(IPrintable [] printable)
+        public void Print(IPrintable book)
         {
-            Console.WriteLine();
+            Console.WriteLine("Print Book");
         }
     }
     class Magazine : IPrintable
     {
         public string magname;
         public int magnumber;
-        static void PrintMagazines(IPrintable[]printable)
+        public void Print(IPrintable magazine)
         {
-            Console.WriteLine();
+            Console.WriteLine("Print Magazine");
         }
     }
 
