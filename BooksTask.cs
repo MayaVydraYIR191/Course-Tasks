@@ -4,6 +4,7 @@ namespace ConsoleApp57
 {
        class Program
     {
+       
         static void Main(string[] args)
         {
             IPrintable[] booksmagazines = new IPrintable[5];
@@ -12,21 +13,21 @@ namespace ConsoleApp57
                 Console.WriteLine(booksmagazines[i]);
                 if(booksmagazines[i]is Book)
                 {
-                    PrintBooks(booksmagazines);
+                    PrintBooks(booksmagazines[i]);
                 }
                 else if(booksmagazines[i] is Magazine)
                 {
-                    PrintMagazines(booksmagazines);
+                    PrintMagazines(booksmagazines[i]);
                 }
             }
         }
-        static void PrintMagazines(IPrintable[] printable)
+        static void PrintMagazines(IPrintable printable)
         {
-            Console.WriteLine(printable[0]);
+            Console.WriteLine(printable);
         }
-        static void PrintBooks(IPrintable[] printable)
+        static void PrintBooks(IPrintable printable)
         {
-            Console.WriteLine(printable[0]);
+            Console.WriteLine(printable);
         }
 
 
