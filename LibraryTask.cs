@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,28 +11,56 @@ namespace ConsoleApp62
     {
         static void Main(string[] args)
         {
-           //окей тут что-нибудь да будет  
+            Reader tom = new Reader();
+            Library library = new Library();
+            library.reader.Add(tom);
+            tom.Subscribe(Library.Genres.Nonfiction);
+            Book biobook = new Book();
+            library.book.Add(biobook);
+            library.BookAdd += Notification;
+
+            void Notification(Library.Genres genre)
+            {
+                if(tom.subscribes[genre])
+                {
+                    Console.WriteLine("Subscription is done");
+                }
+            }
         }
     }
     public class Library
     {
-        public string BookName;
-        public int BookNum;
-        public string BookDescription;
+        public List<Reader> reader = new List<Reader>();
+        public List<Book> book = new List<Book>();
+        public delegate void BookAdded(Genres genres);
+        public event BookAdded BookAdd;
+        public enum Genres
+        {
+            ScienceFiction,
+            RomanticStory,
+            Nonfiction
+
+        }
+    }
+    public class Book
+    {
+        public string BookName { get; set; }
+        public int BookNum { get; set; }
         public bool BookGet;
         public void BookIsHere(string bookname)
         {
-            if(BookGet == true)
+            if (BookGet == true)
             {
                 bookname = BookName;
                 Reader.BookGetting(bookname);
             }
         }
     }
+
     public class Reader
     {
         public static bool BookHere;
-        public string readername;
+        public string readername { get; set; }
         public delegate void Waiting(string message);
         public static event Waiting WaitOver;
         public static void BookGetting(string reader)
@@ -41,6 +69,18 @@ namespace ConsoleApp62
             {
                 WaitOver?.Invoke("You book is finally here");
             }
+        }
+        public void Reading(string readerName)
+        {
+            readername = readerName;
+        }
+        public Dictionary<Library.Genres, bool> subscribes = new Dictionary<Library.Genres, bool>() {
+            { Library.Genres.ScienceFiction, false },
+            { Library.Genres.RomanticStory, false },
+            { Library.Genres.Nonfiction, false }, };
+        public void Subscribe(Library.Genres genre)
+        {
+            subscribes[genre] = true;
         }
     }
 }
