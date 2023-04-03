@@ -7,11 +7,11 @@ namespace ConsoleApp70
     {
         static void Main(string[] args)
         {
-            string file = "file";
-            string directory = "directory";
-            string copyfile = "copyfile";
-            string renamefile = "renamefile";
-            string replace = "replace";
+            string file = "file.txt";
+            string directory = "directory.txt";
+            string copyfile = "copyfile.txt";
+            string renamefile = "renamefile.txt";
+            string replace = "replace.txt";
 
             TotalCommander.FileCreating(file);
             TotalCommander.FileCreating(copyfile);
