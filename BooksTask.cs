@@ -2,40 +2,56 @@
 
 namespace ConsoleApp57
 {
-    class Program
+       class Program
     {
+       
         static void Main(string[] args)
         {
             IPrintable[] booksmagazines = new IPrintable[5];
             for (int i = 0; i < booksmagazines.Length; i++)
             {
                 Console.WriteLine(booksmagazines[i]);
+                if(booksmagazines[i]is Book)
+                {
+                    PrintBooks(booksmagazines[i]);
+                }
+                else if(booksmagazines[i] is Magazine)
+                {
+                    PrintMagazines(booksmagazines[i]);
+                }
             }
         }
+        static void PrintMagazines(IPrintable printable)
+        {
+            Console.WriteLine(printable);
+        }
+        static void PrintBooks(IPrintable printable)
+        {
+            Console.WriteLine(printable);
+        }
+
+
     }
     interface IPrintable
     {
-        void Print()
-        {
-            Console.WriteLine();
-        }
+        public void Print(IPrintable edition);
     }
     class Book : IPrintable
     {
         public string bookname;
         public int booknumber;
-        static void PrintBooks(IPrintable [] printable)
+        public void Print(IPrintable book)
         {
-            Console.WriteLine();
+            Console.WriteLine("Print Book");
         }
     }
     class Magazine : IPrintable
     {
         public string magname;
         public int magnumber;
-        static void PrintMagazines(IPrintable[]printable)
+        public void Print(IPrintable magazine)
         {
-            Console.WriteLine();
+            Console.WriteLine("Print Magazine");
         }
     }
 
