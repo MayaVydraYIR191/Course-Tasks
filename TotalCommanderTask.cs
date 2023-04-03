@@ -8,7 +8,7 @@ namespace ConsoleApp70
         static void Main(string[] args)
         {
             string file = @"c:\test\file.txt";
-            string directory = @"c:\test\directory.txt";
+            string directory = @"c:\test\directory";
             string copyfile = @"c:\test\copyfile.txt";
             string renamefile = @"c:\test\renamefile.txt";
             string replace = @"c:\test\replace.txt";
