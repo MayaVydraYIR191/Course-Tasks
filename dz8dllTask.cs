@@ -14,6 +14,8 @@ namespace ConsoleApp69
             var dz8types = dz8.GetTypes();
             Console.WriteLine(string.Join(' ', dz8types.Select(x => x.Name)));
             
+            var dz8methods = dz8Type.GetMethods(BindingFlags.Public);
+            
             Console.WriteLine($"Name: {dz8type.Name}");
             Console.WriteLine($"Full Name: {dz8type.FullName}");
             Console.WriteLine($"Namespace: {dz8type.Namespace}");
