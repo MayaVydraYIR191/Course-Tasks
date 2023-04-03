@@ -10,6 +10,10 @@ namespace ConsoleApp69
         {
             var dz8 = Assembly.Load(File.ReadAllBytes("dz8.dll"));
             Type dz8type = dz8.GetType();
+            
+            var dz8types = dz8.GetTypes();
+            Console.WriteLine(string.Join(' ', dz8types.Select(x => x.Name)));
+            
             Console.WriteLine($"Name: {dz8type.Name}");
             Console.WriteLine($"Full Name: {dz8type.FullName}");
             Console.WriteLine($"Namespace: {dz8type.Namespace}");
