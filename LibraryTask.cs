@@ -18,7 +18,7 @@ namespace ConsoleApp62
             Book biobook = new Book();
             library.book.Add(biobook);
             library.BookAdd += Notification;
-
+            BookAdd(Library.Genres.Nonfiction);
             void Notification(Library.Genres genre)
             {
                 if(tom.subscribes[genre])
